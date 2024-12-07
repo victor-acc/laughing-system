@@ -1,0 +1,437 @@
+﻿@model glamping_addventure3.Models.Reserva
+
+@{
+    ViewData["Title"] = "Details";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .container-wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* Espacio entre columnas */
+    }
+
+    .left-column, .right-column {
+        flex: 1; /* Hace que ambas columnas ocupen el mismo espacio */
+    }
+
+    .container {
+        position: relative;
+        border: 2px solid black;
+        padding: 20px;
+        width: 500px;
+        margin: 20px;
+        background-color: #1f2937; /* Fondo oscuro */
+        color: #e5e7eb; /* Texto claro */
+    }
+
+        .container::before {
+            content: 'Información Cliente'; /* Título de la primera caja */
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            background-color: #1f2937; /* Fondo oscuro */
+            padding: 0 10px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            color: #e5e7eb; /* Color claro para el título */
+        }
+
+    .container1 {
+        position: relative;
+        border: 2px solid black;
+        padding: 20px;
+        margin: 20px;
+        width: 500px;
+        height: 700px;
+        background-color: #1f2937; /* Fondo oscuro */
+        color: #e5e7eb; /* Texto claro */
+    }
+
+        .container1::before {
+            content: 'Información Reserva'; /* Título de la segunda caja */
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            background-color: #1f2937; /* Fondo oscuro */
+            padding: 0 10px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            color: #e5e7eb; /* Color claro para el título */
+        }
+
+    .container2 {
+        position: relative;
+        border: 2px solid black;
+        padding: 20px;
+        width: 500px;
+        margin: 20px;
+        background-color: #1f2937; /* Fondo oscuro */
+        color: #e5e7eb; /* Texto claro */
+    }
+
+        .container2::before {
+            content: 'Paquetes y Servicios'; /* Título de la tercera caja */
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            background-color: #1f2937; /* Fondo oscuro */
+            padding: 0 10px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            color: #e5e7eb; /* Color claro para el título */
+        }
+
+    .container3 {
+        position: relative;
+        border: 2px solid black;
+        padding: 20px;
+        margin: 20px;
+        background-color: #1f2937; /* Fondo oscuro */
+        color: #e5e7eb; /* Texto claro */
+    }
+
+        .container3::before {
+            content: ''; /* Sin título en la cuarta caja */
+            display: none; /* No muestra título */
+        }
+
+    .form-label {
+        color: #ffffff; /* Cambiar color a blanco para las etiquetas */
+    }
+
+    #permissionSearch {
+        color: #ffffff; /* Cambiar color a blanco para el input de búsqueda */
+    }
+
+    #nombreRol {
+        color: #ffffff; /* Cambiar color a blanco para el input del nombre de rol */
+    }
+
+    .modal-lg {
+        max-width: 300%; /* Ajuste para un modal más grande */
+        height: auto;
+        overflow-y: auto; /* Habilitar scroll si el contenido es extenso */
+        margin-bottom: 90px;
+    }
+
+    .btn-create {
+        background-color: #38b2ac; /* Verde brillante */
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .btn-create:hover {
+            background-color: #319795; /* Verde más oscuro al pasar el mouse */
+            transform: translateY(-2px); /* Animación sutil */
+        }
+
+    .btn-secondary {
+        background-color: #4b5563; /* Gris oscuro */
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #374151; /* Gris más oscuro al pasar el mouse */
+        }
+
+    .permissions-container {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #4b5563;
+        background-color: #2d3748;
+        border-radius: 10px;
+    }
+
+    .permission-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 34px;
+        transition: 0.4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+    input:checked + .slider {
+        background-color: #38b2ac; /* Verde brillante */
+    }
+
+        input:checked + .slider:before {
+            transform: translateX(14px);
+        }
+
+    .container {
+        background-color: #1f2937; /* Fondo oscuro */
+        color: #e5e7eb; /* Texto claro */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+    }
+
+    .form-control {
+        background: #2d3748; /* Fondo oscuro para inputs */
+        border: 1px solid #4b5563; /* Borde oscuro */
+        color: #e5e7eb; /* Texto claro */
+        border-radius: 8px;
+        padding: 10px;
+        transition: border-color 0.3s, background 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #38b2ac; /* Verde brillante al enfocar */
+            outline: none;
+            background: #2d3748;
+        }
+
+    .permission-nombre {
+        color: #e5e7eb;
+    }
+
+    /* Cambiar color de los placeholders */
+    ::placeholder {
+        color: #ffffff !important; /* Cambiar color a blanco para los placeholders */
+    }
+
+    #permissionSearch::placeholder,
+    #nombreRol::placeholder {
+        color: #ffffff !important; /* Asegurarse de que los placeholders sean blancos */
+    }
+</style>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <div class="container-wrapper">
+            <!-- Columna izquierda -->
+            <div class="left-column">
+                <div class="container">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NroDocumentoCliente)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NroDocumentoClienteNavigation.NroDocumento)
+                    </dd>
+                    <dt class="col-sm-2">Nombre</dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NroDocumentoClienteNavigation.Nombre)
+                    </dd>
+
+                    <dt class="col-sm-2">Apellido</dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NroDocumentoClienteNavigation.Apellido)
+                    </dd>
+
+                    <dt class="col-sm-2">Teléfono</dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NroDocumentoClienteNavigation.Telefono)
+                    </dd>
+                </div>
+                <div class="container2">
+                    <h4>Paquetes </h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Paquete</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var paquete in Model.DetalleReservaPaquetes)
+
+
+
+                            {
+                                <tr>
+                                    <td>@paquete.IdpaqueteNavigation.NombrePaquete</td>
+                                    <td>@paquete.IdpaqueteNavigation.Precio</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <h4>Servicios</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Servicio</th>
+                                <th>Costo</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var servicio in Model.DetalleReservaServicios)
+
+
+
+                            {
+
+                                var total = servicio.Precio * servicio.Cantidad;
+                                <!-- Calcular total -->
+                                <tr>
+                                    <td>@servicio.IdservicioNavigation.NombreServicio</td>
+                                    <td>@servicio.Precio</td>
+                                    <td>@servicio.Cantidad</td>
+                                    <td>@total</td> <!-- Mostrar el total calculado -->
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <input type="hidden" id="detalleServicios" name="detalleServicios">
+                </div>
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="right-column">
+                <div class="container1">
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FechaReserva)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FechaReserva)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FechaInicio)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FechaInicio)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.FechaFinalizacion)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FechaFinalizacion)
+                    </dd>
+
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.SubTotal)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.SubTotal)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Descuento)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Descuento)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Iva)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Iva)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MontoTotal)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MontoTotal)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.IdEstadoReservaNavigation)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.IdEstadoReservaNavigation.NombreEstadoReserva)
+                    </dd>
+                    @Html.DisplayFor(model => model.MetodoPagoNavigation.NomMetodoPago)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MetodoPago)
+                    </dt>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdReserva">Editar</a> |
+    <a asp-action="Index">volver atras</a>
+</div>
+@section Scripts {
+    <script>
+        document.getElementById("NroDocumentoCliente").addEventListener("blur", function () {
+            var documento = this.value;
+
+            if (documento) {
+                // Ajusta la URL según tu configuración de rutas
+                fetch(/Reservas/ObtenerClientePorDocumento ? documento = ${ encodeURIComponent(documento) })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Llena los campos con la información del cliente
+                            document.getElementById("NombreCliente").value = data.data.nombre;
+                            document.getElementById("ApellidoCliente").value = data.data.apellido;
+                            document.getElementById("CorreoCliente").value = data.data.correo; // Corregido el nombre del campo
+                            document.getElementById("TelefonoCliente").value = data.data.telefono;
+                        } else {
+                            // Muestra el modal si el cliente no existe
+                            $('#clienteNoExisteModal').modal('show');
+
+                            // Limpia los campos si no se encuentra el cliente
+                            document.getElementById("NombreCliente").value = "";
+                            document.getElementById("ApellidoCliente").value = "";
+                            document.getElementById("CorreoCliente").value = "";
+                            document.getElementById("TelefonoCliente").value = "";
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+            }
+        });
+    </script>
+}

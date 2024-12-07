@@ -1,0 +1,152 @@
+﻿@{
+    Layout = null;
+
+    ViewData["Title"] = "Solicitar Recuperación de Contraseña";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+            color: #e5e7eb;
+        }
+
+        .login-box {
+            background: #1f2937;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 380px;
+            text-align: center;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+            .login-box:hover {
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            }
+
+        .icon-container {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748;
+            border-radius: 50%;
+            padding: 20px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+            .icon-container i {
+                font-size: 48px;
+                color: #fff;
+            }
+
+        .login-box h1 {
+            margin-top: 60px;
+            margin-bottom: 30px;
+            color: #fff;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .textbox {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+            .textbox input {
+                width: 100%;
+                padding: 16px 20px;
+                border: 1px solid #4b5563;
+                border-radius: 8px;
+                background: #2d3748;
+                font-size: 16px;
+                color: #e5e7eb;
+                transition: border-color 0.3s, background 0.3s;
+            }
+
+                .textbox input:focus {
+                    border-color: #38b2ac;
+                    outline: none;
+                    background: #374151;
+                }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #38b2ac;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+            .btn:hover {
+                background-color: #319795;
+                transform: translateY(-2px);
+            }
+
+        .remember-me {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+            .remember-me a {
+                color: #38b2ac;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s ease;
+            }
+
+                .remember-me a:hover {
+                    color: #e5e7eb;
+                    text-decoration: underline;
+                }
+
+    </style>
+
+</head>
+<body>
+    <div class="login-box">
+        <div class="icon-container">
+            <i class="fas fa-key"></i>
+        </div>
+        <h1>Recuperación de Contraseña</h1>
+        <form method="post" asp-action="SolicitarRecuperacion">
+            <div class="textbox">
+                <input type="email" class="form-control" placeholder="Ingresa Email" id="email" name="email" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Código</button>
+        </form>
+    </div>
+</body>
+</html>

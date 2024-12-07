@@ -1,0 +1,114 @@
+﻿@model glamping_addventure3.Models.Usuario
+
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+
+
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        /* Diseño principal */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+        }
+
+        .delete-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+            .btn-danger:hover {
+                background-color: #c9302c;
+            }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: #fff;
+        }
+
+            .btn-secondary:hover {
+                background: #5a6268;
+            }
+    </style>
+</head>
+<body>
+    <div class="delete-box">
+        <h3>¿Desea eliminar este usuario?</h3>
+
+        <div>
+            <h4>Usuario</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">Nombre de Usuario</dt>
+                <dd class="col-sm-8">@Model.NombreUsuario</dd>
+                <dt class="col-sm-4">Correo Electrónico</dt>
+                <dd class="col-sm-8">@Model.Email</dd>
+            </dl>
+        </div>
+
+        <!-- Botón para abrir el modal de confirmación -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+            Eliminar
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro de que desea eliminar al usuario "<strong>@Model.NombreUsuario</strong>"? Esta acción no se puede deshacer.
+                </div>
+                <div class="modal-footer">
+                    <!-- Formulario de eliminación -->
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Idusuario" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>

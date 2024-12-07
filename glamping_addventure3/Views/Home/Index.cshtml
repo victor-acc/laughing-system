@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "dash de los wevos";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-sm-6">
+
+    <div class="card">
+        <div class="card-header">Paquetes mas vendidos</div>
+        <div class="card-body">
+            <canvas id="paquetesPieChart" style="max-height:250px"></canvas>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div style="width: 50%; margin: auto;">
+    <canvas id="paquetesPieChart"></canvas>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('/Home/PaquetesMasVendidos')
+                .then(response => {
+                    if (!response.ok) throw new Error("No se pudieron cargar los datos.");
+                    return response.json();
+                })
+                .then(paquetesData => {
+                    if (paquetesData && paquetesData.length > 0) {
+                        var labels = paquetesData.map(p => p.NombrePaquete); // Nombres de los paquetes
+                        var data = paquetesData.map(p => p.CantidadVendida); // Cantidades vendidas
+
+                        var ctx = document.getElementById('paquetesPieChart').getContext('2d');
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Paquetes Más Vendidos',
+                                    data: data,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.6)',
+                                        'rgba(54, 162, 235, 0.6)',
+                                        'rgba(255, 206, 86, 0.6)',
+                                        'rgba(75, 192, 192, 0.6)',
+                                        'rgba(153, 102, 255, 0.6)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function (tooltipItem) {
+                                                return ${tooltipItem.label}: ${tooltipItem.raw};
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        document.querySelector("canvas#paquetesPieChart").replaceWith(
+                            "<p>No hay datos disponibles para mostrar.</p>"
+                        );
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.querySelector("canvas#paquetesPieChart").replaceWith(
+                        "<p>Ocurrió un error al cargar los datos.</p>"
+                    );
+                });
+        });
+    </script>
+
+}

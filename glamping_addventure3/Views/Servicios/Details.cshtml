@@ -1,0 +1,138 @@
+﻿@model glamping_addventure3.Models.Servicio
+
+@{
+    ViewData["Title"] = "Glamping Addventure";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalles del Servicio</h1>
+
+<div class="details-container">
+    <dl class="details-list">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreServicio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreServicio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Duracion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Duracion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadMaximaPersonas)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CantidadMaximaPersonas)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Costo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+</div>
+<div class="actions">
+    <a asp-action="Edit" asp-route-id="@Model?.Idservicio" class="btn-primary">Editar</a>
+    <a asp-action="Index" class="btn-secondary">Volver</a>
+</div>
+<style>
+    .details-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .details-list {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px;
+    }
+
+        .details-list dt {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .details-list dd {
+            margin: 0;
+            color: #333;
+        }
+
+    .details-image {
+        max-width: 300px;
+        max-height: 300px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .furniture-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+
+        .furniture-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+        }
+
+            .furniture-list li strong {
+                color: #007bff;
+            }
+
+    .no-furniture {
+        color: #666;
+        font-style: italic;
+        margin-top: 10px;
+    }
+
+    .actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>

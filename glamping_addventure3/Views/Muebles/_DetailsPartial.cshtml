@@ -1,0 +1,23 @@
+﻿﻿<div>
+    <h4>@Model.NombreMueble</h4>
+    <img src="@ViewData["ImageDataURL"]" alt="Imagen de la Habitación" class="img-fluid" style="max-width: 100%; height: auto;" />
+</div>
+<div>
+    <h5>Detalles:</h5>
+    <p><strong>CantidadDisponible:</strong> @Model.CantidadDisponible</p>
+    <p><strong>Valor:</strong> @Model.Valor:C</p>
+    <p><strong>Estado:</strong> @(Model.Estado ? "Activo" : "Inactivo")</p>
+</div>
+<style>
+    h5 {
+        text-align: center;
+    }
+
+    body {
+        text-align: center;
+    }
+
+    li, ul {
+        list-style-type: none;
+    }
+</style>

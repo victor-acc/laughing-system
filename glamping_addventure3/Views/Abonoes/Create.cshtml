@@ -1,0 +1,370 @@
+﻿@model glamping_addventure3.Models.Abono
+
+@{
+    ViewData["Title"] = "Crear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="container">
+                <div class="row mb-3 align-items-end">
+                    <div class="col-md-6">
+                        <label>ID Reserva</label>
+                        <input type="text" class="form-control" value="@ViewData["IdReserva"]" readonly />
+                        <input type="hidden" asp-for="Idreserva" value="@ViewData["IdReserva"]" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="FechaAbono" class="control-label"></label>
+                        <input asp-for="FechaAbono" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly />
+                        <span asp-validation-for="FechaAbono" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="ValorDeuda" class="control-label"></label>
+                        <input asp-for="ValorDeuda" class="form-control" id="ValorDeuda" value="@ViewData["MontoTotal"]" readonly />
+                        <span asp-validation-for="ValorDeuda" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Porcentaje" class="control-label"></label>
+                        <input asp-for="Porcentaje" class="form-control" id="Porcentaje" readonly />
+                        <span asp-validation-for="Porcentaje" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Pendiente" class="control-label"></label>
+                        <input asp-for="Pendiente" class="form-control" id="Pendiente" readonly />
+                        <span asp-validation-for="Pendiente" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="CantAbono" class="control-label"></label>
+                        <input asp-for="CantAbono" class="form-control" id="CantAbono" />
+                        <span asp-validation-for="CantAbono" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label>Comprobante</label>
+                        <input type="file" name="comprobante" class="form-control" id="comprobanteInput" onchange="previewImage(event)" />
+
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Estado" class="control-label" hidden></label>
+                        <input asp-for="Estado" class="form-control" value="1" readonly hidden />
+                        <span asp-validation-for="Estado" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-center mt-3 gap-2">
+                    <button class="btn btn-primary" type="submit" style="background: #38b2ac; border: none; color: #fff; font-weight: bold;">Crear</button>
+                    <a asp-action="Index" asp-route-idReserva="@ViewData["IdReserva"]" class="btn btn-secondary" style="background: #4b5563; border: none; color: #fff; font-weight: bold; ">Cancelar</a>
+                </div>
+
+
+
+                <!-- Botones -->
+
+            </div>
+        </form>
+    </div>
+
+
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+        <script>
+            function previewImage(event) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var output = document.getElementById('comprobantePreview');
+                    output.src = reader.result;
+                    output.style.display = 'block';
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+
+            function calcularPorcentajeYPendiente() {
+                // Obtén los elementos por ID generados por Razor
+                const valorDeudaElement = document.getElementById("ValorDeuda");
+                const cantAbonoElement = document.getElementById("CantAbono");
+                const porcentajeElement = document.getElementById("Porcentaje");
+                const pendienteElement = document.getElementById("Pendiente");
+
+                // Asegúrate de que los elementos existen y obtén sus valores
+                const valorDeuda = parseFloat(valorDeudaElement?.value) || 0;
+                const cantAbono = parseFloat(cantAbonoElement?.value) || 0;
+
+                // Calcula porcentaje y pendiente
+                const porcentaje = (cantAbono / valorDeuda) * 100;
+                let pendiente = valorDeuda - cantAbono;
+
+                // Si el pendiente es un número entero, no usar decimales
+                pendiente = Number.isInteger(pendiente) ? pendiente : pendiente.toFixed(2);
+
+                // Actualiza los campos de porcentaje y pendiente
+                if (porcentajeElement) porcentajeElement.value = porcentaje.toFixed(2);
+                if (pendienteElement) pendienteElement.value = pendiente;
+            }
+
+            // Vincula el evento input al campo CantAbono
+            document.getElementById("CantAbono").addEventListener("input", calcularPorcentajeYPendiente);
+        </script>
+    }
+    <style>
+        .container-wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px; /* Espacio entre columnas */
+        }
+
+        .left-column, .right-column {
+            flex: 1; /* Hace que ambas columnas ocupen el mismo espacio */
+        }
+
+        .container {
+            position: relative;
+            border: 2px solid black;
+            padding: 20px;
+            width: 1000px;
+            margin: 20px;
+            background-color: #1f2937; /* Fondo oscuro */
+            color: #e5e7eb; /* Texto claro */
+        }
+
+            .container::before {
+                content: 'Información del abono'; /* Título de la primera caja */
+                position: absolute;
+                top: -15px;
+                left: 10px;
+                background-color: #1f2937; /* Fondo oscuro */
+                padding: 0 10px;
+                font-weight: bold;
+                font-family: Arial, sans-serif;
+                color: #e5e7eb; /* Color claro para el título */
+            }
+
+        .container1 {
+            position: relative;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+            width: 400px;
+            height: 540px;
+            background-color: #1f2937; /* Fondo oscuro */
+            color: #e5e7eb; /* Texto claro */
+        }
+
+            .container1::before {
+                content: 'Información Reserva'; /* Título de la segunda caja */
+                position: absolute;
+                top: -15px;
+                left: 10px;
+                background-color: #1f2937; /* Fondo oscuro */
+                padding: 0 10px;
+                font-weight: bold;
+                font-family: Arial, sans-serif;
+                color: #e5e7eb; /* Color claro para el título */
+            }
+
+        .container2 {
+            position: relative;
+            border: 2px solid black;
+            padding: 20px;
+            width: 700px;
+            margin: 20px;
+            background-color: #1f2937; /* Fondo oscuro */
+            color: #e5e7eb; /* Texto claro */
+        }
+
+            .container2::before {
+                content: 'Paquetes y Servicios'; /* Título de la tercera caja */
+                position: absolute;
+                top: -15px;
+                left: 10px;
+                background-color: #1f2937; /* Fondo oscuro */
+                padding: 0 10px;
+                font-weight: bold;
+                font-family: Arial, sans-serif;
+                color: #e5e7eb; /* Color claro para el título */
+            }
+
+        .container3 {
+            position: relative;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+            background-color: #1f2937; /* Fondo oscuro */
+            color: #e5e7eb; /* Texto claro */
+        }
+
+            .container3::before {
+                content: ''; /* Sin título en la cuarta caja */
+                display: none; /* No muestra título */
+            }
+
+        .form-label {
+            color: #ffffff; /* Cambiar color a blanco para las etiquetas */
+        }
+
+        #permissionSearch {
+            color: #ffffff; /* Cambiar color a blanco para el input de búsqueda */
+        }
+
+        #nombreRol {
+            color: #ffffff; /* Cambiar color a blanco para el input del nombre de rol */
+        }
+
+        .modal-lg {
+            max-width: 300%; /* Ajuste para un modal más grande */
+            height: auto;
+            overflow-y: auto; /* Habilitar scroll si el contenido es extenso */
+            margin-bottom: 90px;
+        }
+
+        .btn-create {
+            background-color: #38b2ac; /* Verde brillante */
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+            .btn-create:hover {
+                background-color: #319795; /* Verde más oscuro al pasar el mouse */
+                transform: translateY(-2px); /* Animación sutil */
+            }
+
+        .btn-secondary {
+            background-color: #4b5563; /* Gris oscuro */
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-secondary:hover {
+                background-color: #374151; /* Gris más oscuro al pasar el mouse */
+            }
+
+        .permissions-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #4b5563;
+            background-color: #2d3748;
+            border-radius: 10px;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 20px;
+        }
+
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 14px;
+                width: 14px;
+                left: 3px;
+                bottom: 3px;
+                background-color: white;
+                border-radius: 50%;
+                transition: 0.4s;
+            }
+
+        input:checked + .slider {
+            background-color: #38b2ac; /* Verde brillante */
+        }
+
+            input:checked + .slider:before {
+                transform: translateX(14px);
+            }
+
+        .container {
+            background-color: #1f2937; /* Fondo oscuro */
+            color: #e5e7eb; /* Texto claro */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .form-control {
+            background: #2d3748; /* Fondo oscuro para inputs */
+            border: 1px solid #4b5563; /* Borde oscuro */
+            color: #e5e7eb; /* Texto claro */
+            border-radius: 8px;
+            padding: 10px;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+            .form-control:focus {
+                border-color: #38b2ac; /* Verde brillante al enfocar */
+                outline: none;
+                background: #2d3748;
+            }
+
+        .permission-nombre {
+            color: #e5e7eb;
+        }
+
+        /* Cambiar color de los placeholders */
+        ::placeholder {
+            color: #ffffff !important; /* Cambiar color a blanco para los placeholders */
+        }
+
+        #permissionSearch::placeholder,
+        #nombreRol::placeholder {
+            color: #ffffff !important; /* Asegurarse de que los placeholders sean blancos */
+        }
+    </style>

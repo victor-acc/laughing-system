@@ -1,0 +1,73 @@
+﻿@model glamping_addventure3.Models.Abono
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Abono</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaAbono)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaAbono)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ValorDeuda)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ValorDeuda)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Porcentaje)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Porcentaje)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pendiente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pendiente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantAbono)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantAbono)
+        </dd>
+        <dt class="col-sm-2">Comprobante</dt>
+        <dd class="col-sm-10">
+            @if (ViewData["Comprobante"] != null)
+            {
+                <img src="@ViewData["Comprobante"]" alt="Comprobante" style="max-height:300px;" />
+            }
+            else
+            {
+                <p>No se cargó comprobante</p>
+            }
+        </dd>
+       
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdreservaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdreservaNavigation.IdReserva)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Idabono">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

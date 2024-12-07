@@ -1,0 +1,28 @@
+﻿@{
+    <div>
+        <h4>@Model.FechaAbono</h4>
+        <img src="@ViewData["ImageDataURL"]" alt="comprobante" class="img-fluid" style="max-width: 100%; height: auto;" />
+    </div>
+    <div>
+        <h5>Detalles:</h5>
+        <p><strong>id reserva:</strong> @Model.IdreservaNavigation?.IdreservaNavigation</p>
+        <p><strong>ValorDeuda:</strong> @Model.ValorDeuda</p>
+        <p><strong>Porcentaje:</strong> @Model.Porcentaje</p>
+        <p><strong>Porcentaje:</strong> @Model.Porcentaje</p>
+        <p><strong>Cantidad abonada:</strong> @Model.CantAbono</p>
+
+        <p><strong>Estado:</strong> @(Model.Estado ? "habilitado" : "anulado")</p>
+    </div>
+
+    <style>
+        h5{
+            text-align: center;
+        }
+        body{
+            text-align: center;
+        }
+        li,ul{
+            list-style-type:none;
+        }
+    </style>
+}

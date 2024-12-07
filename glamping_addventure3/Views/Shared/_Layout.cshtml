@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Glamping Addventure</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Roboto", Arial, sans-serif;
+            background-color: #f8f9fa; /* Fondo claro */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden; /* Evitar desplazamientos no deseados */
+        }
+
+        .sidebar {
+            width: 250px; /* Ancho más amplio */
+            background-color: #343a40; /* Color gris oscuro */
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: width 0.3s ease; /* Animación para el cambio de tamaño */
+        }
+
+            .sidebar.collapsed {
+                width: 80px; /* Ancho más estrecho cuando se recoge */
+            }
+
+            .sidebar a {
+                color: #adb5bd; /* Color gris claro */
+                text-decoration: none;
+                padding: 15px 20px;
+                font-size: 16px;
+                display: flex;
+                align-items: center;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+                .sidebar a:hover {
+                    background-color: #495057; /* Color de hover */
+                    color: #ffffff;
+                }
+
+                .sidebar a i {
+                    margin-right: 10px;
+                }
+
+                .sidebar a.active {
+                    background-color: #007bff; /* Color activo (azul) */
+                    color: #ffffff;
+                }
+
+        .content {
+            flex-grow: 1;
+            margin-left: 250px; /* Ajustar según el ancho de la sidebar */
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 0; /* Sin bordes redondeados */
+            box-shadow: none;
+            overflow-y: auto; /* Permitir desplazamiento vertical */
+            transition: margin-left 0.3s ease; /* Animación para el cambio de margen */
+        }
+
+            .content.collapsed {
+                margin-left: 80px; /* Ajustar cuando la sidebar esté recogida */
+            }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef; /* Línea sutil */
+            position: sticky;
+            top: 0;
+            z-index: 10; /* Asegurar que esté sobre otros elementos */
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .icon {
+            font-size: 20px;
+            color: #6c757d;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+            .icon:hover {
+                color: #495057; /* Color más oscuro en hover */
+            }
+
+        /* Estilos para el botón de minimización */
+        .sidebar-toggle {
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            z-index: 100;
+        }
+
+        /* Cambiar el diseño del texto cuando la sidebar esté recogida */
+        .collapsed .icon-text {
+            display: none;
+        }
+
+        .collapsed a {
+            justify-content: center;
+        }
+
+        /* Separar el icono del menú de los enlaces */
+        .sidebar .menu-links {
+            margin-top: 40px; /* Agregar espacio desde el icono del menú */
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="toggleSidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="menu-links">
+            <a href="@Url.Action("Index", "Home")">
+                <i class="fas fa-home"></i>
+                <span class="icon-text">Inicio</span>
+            </a>
+            <a href="@Url.Action("Index", "Roles")">
+                <i class="fas fa-user-shield"></i>
+                <span class="icon-text">Roles</span>
+            </a>
+            <a href="@Url.Action("Index", "Usuarios")">
+                <i class="fas fa-users"></i>
+                <span class="icon-text">Usuarios</span>
+            </a>
+            
+            <a href="@Url.Action("Index", "Reservas")">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span class="icon-text">Reserva</span>
+            </a>
+            <a href="@Url.Action("Index", "Habitacions")">
+                <i class="fa-solid fa-bed "></i>
+                <span class="icon-text">Habitaciones</span>
+            </a>
+            <a href="@Url.Action("Index", "Muebles")">
+                <i class="fa-solid fa-chair "></i>
+                <span class="icon-text">Muebles</span>
+            </a>
+            <a href="@Url.Action("Index", "TipodeHabitacions")">
+                <i class="fa-solid fa-person-booth "></i>
+                <span class="icon-text">Tipo de habitaciones</span>
+            </a>
+            <a href="@Url.Action("Index", "Servicios")">
+                <i class="fa-solid fa-person-swimming"></i>
+                <span class="icon-text">Servicios</span>
+            </a>
+            <a href="@Url.Action("Index", "Paquetes")">
+                <i class="fa-solid fa-person-swimming"></i>
+                <span class="icon-text">Paquetes</span>
+            </a>
+            <a href="@Url.Action("CerrarSesion", "Home")">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="icon-text">Cerrar Sesión</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="content" id="content">
+        <header>
+            <div class="header-title">@ViewData["Title"]</div>
+            <div>
+                <i class="fas fa-bell icon"></i>
+                <i class="fas fa-user-circle icon"></i>
+            </div>
+        </header>
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#toggleSidebar').click(function () {
+                $('#sidebar').toggleClass('collapsed');
+                $('#content').toggleClass('collapsed');
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿﻿<div>
+    <h4>@Model.NombreTipodeHabitacion</h4>
+</div>
+<div>
+    <h5>Detalles:</h5>
+    <p><strong>Descripción:</strong> @Model.Descripcion</p>
+    <p><strong>Estado:</strong> @(Model.Estado ? "Activo" : "Inactivo")</p>
+</div>
+<style>
+    h5 {
+        text-align: center;
+    }
+
+    body {
+        text-align: center;
+    }
+
+    li, ul {
+        list-style-type: none;
+    }
+</style>

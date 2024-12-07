@@ -1,0 +1,40 @@
+﻿﻿<div>
+    <h4>@Model.NombreHabitacion</h4>
+    <img src="@ViewData["ImageDataURL"]" alt="Imagen de la Habitación" class="img-fluid" style="max-width: 100%; height: auto;" />
+</div>
+<div>
+    <h5>Detalles:</h5>
+    <p><strong>Tipo:</strong> @Model.IdtipodeHabitacionNavigation?.NombreTipodeHabitacion</p>
+    <p><strong>Descripción:</strong> @Model.Descripcion</p>
+    <p><strong>Costo:</strong> @Model.Costo:C</p>
+    <p><strong>Estado:</strong> @(Model.Estado ? "Activo" : "Inactivo")</p>
+</div>
+<div>
+    <h5>Muebles en la habitación:</h5>
+    <ul>
+        @if (ViewData["MueblesAgrupados"] is IEnumerable<dynamic> muebles && muebles.Any())
+        {
+            foreach (var mueble in muebles)
+            {
+                <li>@mueble.NombreMueble (@mueble.Cantidad)</li>
+            }
+        }
+        else
+        {
+            <li>No hay muebles asignados.</li>
+        }
+    </ul>
+</div>
+<style>
+    h5 {
+        text-align: center;
+    }
+
+    body {
+        text-align: center;
+    }
+
+    li, ul {
+        list-style-type: none;
+    }
+</style>

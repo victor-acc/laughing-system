@@ -1,0 +1,213 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%); /* Gradiente oscuro y profesional */
+            color: #e5e7eb; /* Texto en color claro para contrastar */
+        }
+
+        .login-box {
+            background: #1f2937; /* Fondo oscuro para el formulario */
+            padding: 40px;
+            border-radius: 12px; /* Bordes suaves */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra sutil y difusa */
+            width: 380px;
+            text-align: center;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+            .login-box:hover {
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); /* Aumenta la sombra al pasar el mouse */
+            }
+
+        .icon-container {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3748; /* Color más oscuro para el ícono */
+            border-radius: 50%;
+            padding: 20px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); /* Sombra suave */
+        }
+
+            .icon-container i {
+                font-size: 48px;
+                color: #fff;
+            }
+
+        .login-box h1 {
+            margin-top: 60px;
+            margin-bottom: 30px;
+            color: #fff; /* Color de texto blanco para el título */
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px; /* Un poco de espacio entre letras */
+        }
+
+        .textbox {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+            .textbox input {
+                width: 100%;
+                padding: 16px 50px 16px 20px;
+                border: 1px solid #4b5563; /* Borde oscuro */
+                border-radius: 8px;
+                background: #2d3748; /* Fondo oscuro para los inputs */
+                font-size: 16px;
+                color: #e5e7eb; /* Color claro para el texto */
+                transition: border-color 0.3s, background 0.3s; /* Transición suave */
+            }
+
+                .textbox input:focus {
+                    border-color: #38b2ac; /* Verde brillante al hacer foco */
+                    outline: none;
+                    background: #374151; /* Fondo más claro cuando está enfocado */
+                }
+
+            .textbox i {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #9ca3af; /* Gris claro para los iconos */
+                font-size: 18px;
+            }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #38b2ac; /* Verde brillante para el botón */
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+        }
+
+            .btn:hover {
+                background-color: #319795; /* Hover más oscuro */
+                transform: translateY(-2px); /* Elevación al pasar el ratón */
+            }
+
+        .remember-me {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+            .remember-me a {
+                color: #38b2ac;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s ease;
+            }
+
+                .remember-me a:hover {
+                    color: #e5e7eb; /* Cambio de color a blanco */
+                    text-decoration: underline;
+                }
+
+        .register-link {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #a0aec0; /* Gris claro para el texto */
+        }
+
+            .register-link a {
+                color: #38b2ac;
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.2s ease;
+            }
+
+                .register-link a:hover {
+                    color: #e5e7eb;
+                    text-decoration: underline;
+                }
+
+        .alert {
+            font-size: 14px;
+            margin-top: 15px;
+            color: #e74c3c; /* Rojo para alertas */
+        }
+
+        /* Agregar efectos para la transición de sombras */
+        .alert-success {
+            color: #2ecc71; /* Verde para éxito */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="icon-container">
+            <i class="fas fa-user-circle"></i>
+        </div>
+        <h1>Iniciar Sesión</h1>
+        <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+            <div class="textbox">
+                <input type="text" name="email" placeholder="Email" required />
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="textbox">
+                <input type="password" name="contrasena" placeholder="Password" required />
+                <i class="fas fa-lock"></i>
+            </div>
+
+            <button class="btn" type="submit">Ingresa</button>
+
+            @if (ViewData["Mensaje"] != null)
+            {
+                <div class="form-group mt-3">
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                </div>
+            }
+
+            <div class="remember-me">
+                <a href="@Url.Action("SolicitarRecuperacion", "Recuperacion")">¿Olvidaste tu contraseña?</a>
+            </div>
+
+         @*   <div class="remember-me">
+                <a href="@Url.Action("Registrarse", "Inicio")">Registrarse</a>
+            </div>  *@
+
+        </form>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\reservascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\reservas\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\reservas\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\inicio\\iniciarsesion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\inicio\\iniciarsesion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\reservas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\reservas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\inicio\\registrarse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\inicio\\registrarse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\usuarios\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\usuarios\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\tipodehabitacionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\tipodehabitacionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\recuperacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\recuperacioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\permisoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\permisoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\paquetescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\paquetescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\mueblescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\mueblescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\iniciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\iniciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\habitacionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\habitacionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\controllers\\abonoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\controllers\\abonoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\usuarios\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\usuarios\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|c:\\users\\color\\downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\views\\usuarios\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A2DF785-462C-45B0-AD48-F150C7EB3CBB}|glamping_addventure3\\glamping_addventure3.csproj|solutionrelative:glamping_addventure3\\views\\usuarios\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Reservas\\Edit.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Reservas\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Reservas\\Edit.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Reservas\\Edit.cshtml",
+              "ViewState": "AgIAACQCAAAAAAAAAADwv5ACAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T01:03:05.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Reservas\\Create.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Reservas\\Create.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Reservas\\Create.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Reservas\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-07T00:58:57.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAADsAAAAAAAAAAADwv0gAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T19:24:47.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Registrarse.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Inicio\\Registrarse.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Inicio\\Registrarse.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Inicio\\Registrarse.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Inicio\\Registrarse.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-06T15:28:54.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IniciarSesion.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Inicio\\IniciarSesion.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Inicio\\IniciarSesion.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Inicio\\IniciarSesion.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Inicio\\IniciarSesion.cshtml",
+              "ViewState": "AgIAALIAAAAAODMzMzMbwMsAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-05T12:07:58.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:02:10.923Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReservasController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\ReservasController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\ReservasController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\ReservasController.cs*",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\ReservasController.cs*",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAkwKUAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:02:03.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RecuperacionController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\RecuperacionController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\RecuperacionController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\RecuperacionController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\RecuperacionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:01:55.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Usuarios\\Create.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Usuarios\\Create.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Usuarios\\Create.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Usuarios\\Create.cshtml",
+              "ViewState": "AgIAAJEBAAAA8GVmZmbWvzUBAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-05T11:59:49.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ServiciosController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\ServiciosController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\ServiciosController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\ServiciosController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\ServiciosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:02:17.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TipodeHabitacionsController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\TipodeHabitacionsController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\TipodeHabitacionsController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\TipodeHabitacionsController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\TipodeHabitacionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:02:24.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T11:42:09.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PermisosController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\PermisosController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\PermisosController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\PermisosController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\PermisosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:01:49.615Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PaquetesController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\PaquetesController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\PaquetesController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\PaquetesController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\PaquetesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:01:43.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MueblesController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\MueblesController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\MueblesController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\MueblesController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\MueblesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:01:20.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "InicioController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\InicioController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\InicioController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\InicioController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\InicioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:01:13.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "HabitacionsController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\HabitacionsController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\HabitacionsController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\HabitacionsController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\HabitacionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:01:04.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ClientesController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\ClientesController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\ClientesController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\ClientesController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\ClientesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:00:54.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AbonoesController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\AbonoesController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\AbonoesController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\AbonoesController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\AbonoesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:00:24.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "glamping_addventure3\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwEUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T12:00:15.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Roles\\Create.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Roles\\Create.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Roles\\Create.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Roles\\Create.cshtml",
+              "ViewState": "AgIAABMAAABANTMzMzMrwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-05T11:59:27.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Usuarios\\Delete.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Usuarios\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Usuarios\\Delete.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Usuarios\\Delete.cshtml",
+              "ViewState": "AgIAADEAAAAAlpmZmZkNwFwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-05T11:44:20.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Usuarios\\Edit.cshtml",
+              "RelativeDocumentMoniker": "glamping_addventure3\\Views\\Usuarios\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\Views\\Usuarios\\Edit.cshtml",
+              "RelativeToolTip": "glamping_addventure3\\Views\\Usuarios\\Edit.cshtml",
+              "ViewState": "AgIAACABAAAAAAAAAAAAwDYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-05T11:42:53.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\appsettings.json",
+              "RelativeDocumentMoniker": "glamping_addventure3\\appsettings.json",
+              "ToolTip": "C:\\Users\\color\\Downloads\\xddd\\scaling-octo-journey-main\\glamping_addventure3\\appsettings.json",
+              "RelativeToolTip": "glamping_addventure3\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-05T11:33:59.042Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

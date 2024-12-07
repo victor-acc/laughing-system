@@ -1,0 +1,10 @@
+﻿<div>
+    <p>¿Estás seguro de que deseas eliminar el mueble <strong>@Model.NombreMueble</strong>?</p>
+
+    <form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Idmueble" onsubmit="return submitDeleteForm(this);">
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-danger me-2">Eliminar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+    </form>
+</div>

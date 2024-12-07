@@ -1,0 +1,62 @@
+﻿@model glamping_addventure3.Models.Paquete
+
+<dl class="row">
+    <dt class="text-center">
+        @Html.DisplayNameFor(model => model.NombrePaquete)
+    </dt>
+    <dd class="text-center">
+        @Html.DisplayFor(model => model.NombrePaquete)
+    </dd>
+
+    <dt class="text-center">
+        @Html.DisplayNameFor(model => model.ImagenPaquete)
+    </dt>
+    <dd class="text-center">
+        @if (Model.ImagenPaquete != null && Model.ImagenPaquete.Length > 0)
+        {
+            var base64Image = Convert.ToBase64String(Model.ImagenPaquete);
+            var imageSrc = $"data:image/png;base64,{base64Image}";
+            <img src="@imageSrc" alt="Imagen de @Model.NombrePaquete" style="width:250px;height:auto;" />
+        }
+        else
+        {
+            <span>No hay imagen</span>
+        }
+    </dd>
+
+    <dt class="text-center">
+        @Html.DisplayNameFor(model => model.Descripcion)
+    </dt>
+    <dd class="text-center">
+        @Html.DisplayFor(model => model.Descripcion)
+    </dd>
+
+    <dt class="text-center">
+        @Html.DisplayNameFor(model => model.Precio)
+    </dt>
+    <dd class="text-center">
+        @Html.DisplayFor(model => model.Precio)
+    </dd>
+
+    <dt class="text-center">
+        @Html.DisplayNameFor(model => model.Estado)
+    </dt>
+    <dd class="text-center">
+        @Html.Raw(Model.Estado ? "Activo" : "Inactivo")
+    </dd>
+
+    <dt class="text-center">
+        @Html.DisplayNameFor(model => model.IdhabitacionNavigation)
+    </dt>
+    <dd class="text-center">
+        @Html.DisplayFor(model => model.IdhabitacionNavigation.NombreHabitacion)
+    </dd>
+
+    <dt class="text-center">
+        @Html.DisplayNameFor(model => model.IdservicioNavigation)
+    </dt>
+    <dd class="text-center">
+        @Html.DisplayFor(model => model.IdservicioNavigation.NombreServicio)
+    </dd>
+
+</dl>

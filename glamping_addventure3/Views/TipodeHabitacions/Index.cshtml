@@ -1,0 +1,253 @@
+﻿@model IEnumerable<glamping_addventure3.Models.TipodeHabitacion>
+
+@{
+    ViewData["Title"] = "Tipo de Habitacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="d-flex justify-content-end mb-4">
+        <a asp-action="Create" class="btn btn-create">
+            <i class="fas fa-plus"></i> Crear
+        </a>
+    </div>
+
+    <table id="myTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NombreTipodeHabitacion)</th>
+                <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                <th>@Html.DisplayName("Acciones")</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="row-@item.IdtipodeHabitacion">
+                    <td>@Html.DisplayFor(modelItem => item.NombreTipodeHabitacion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td id="estado-@item.IdtipodeHabitacion">@Html.Raw(item.Estado ? "Activo" : "Inactivo")</td>
+                    <td>
+                        <button onclick="cambiarEstado(@item.IdtipodeHabitacion, this)" class="btn btn-warning btn-sm" id="cambiar-estado-@item.IdtipodeHabitacion">
+                            <i class="@(item.Estado ? "fa-solid fa-xmark" : "fa-solid fa-plug")"></i>
+                        </button>
+                        <a asp-action="Edit" asp-route-id="@item.IdtipodeHabitacion" class="btn btn-success btn-sm">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <button onclick="loadDetails(@item.IdtipodeHabitacion)" class="btn btn-info btn-sm">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="loadDelete(@item.IdtipodeHabitacion)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Detalles del tipo de habitacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="detailsModalBody">
+                <!-- Aquí se cargará el contenido dinámico -->
+                <div class="text-center">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Eliminar tipo de Habitación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="deleteModalBody">
+                <div class="text-center">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function loadDetails(id) {
+        $.get('/TipodeHabitacions/Details/' + id, function (data) {
+            // Insertar el contenido en el modal
+            $('#detailsModalBody').html(data);
+            // Abrir el modal
+            $('#detailsModal').modal('show');
+        }).fail(function () {
+            $('#detailsModalBody').html('<div class="text-danger">Error al cargar los detalles.</div>');
+        });
+    }
+</script>
+<script>
+    function loadDelete(id) {
+        console.log("Cargando servicio con ID:", id); // Verifica el ID que pasa al controlador.
+        $.get('/TipodeHabitacions/Delete/' + id, function (data) {
+            $('#deleteModalBody').html(data); // Inserta el contenido parcial
+            $('#deleteModal').modal('show'); // Muestra el modal
+        }).fail(function () {
+            $('#deleteModalBody').html('<div class="text-danger">Error al cargar la información del tipo de habitacion.</div>');
+        });
+    }
+</script>
+<script>
+    function submitDeleteForm(form) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario.
+
+        $.post($(form).attr('action'), $(form).serialize())
+            .done(function (response) {
+                if (response.success) {
+                    $('#deleteModal').modal('hide'); // Cerrar el modal.
+                    location.reload(); // Recargar la página (o actualiza dinámicamente la tabla si prefieres).
+                } else {
+                    alert(response.message); // Mostrar mensaje de error.
+                }
+            })
+            .fail(function (xhr, status, error) {
+                console.error("Error:", error); // Ver detalles en consola.
+                console.error("Detalles:", xhr.responseText); // Muestra respuesta completa.
+                alert("Ocurrió un error inesperado al intentar eliminar el tipo de habitacion.");
+            });
+    }
+</script>
+<script>
+    function cambiarEstado(id, button) {
+        $.ajax({
+            url: '@Url.Action("CambiarEstado")',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response.success) {
+                    // Actualizar la columna de estado
+                    const estadoText = response.estado ? "Activo" : "Inactivo";
+                    $("#estado-" + id).text(estadoText);
+
+                    // Actualizar el icono y texto del botón
+                    const icon = $(button).find("i");
+                    if (response.estado) {
+                        icon.removeClass("fa-plug").addClass("fa-xmark");
+                        $(button).text("").prepend(icon);
+                    } else {
+                        icon.removeClass("fa-xmark").addClass("fa-plug");
+                        $(button).text("").prepend(icon);
+                    }
+                } else {
+                    alert("Hubo un problema al cambiar el estado.");
+                }
+            },
+            error: function () {
+                alert("Error al procesar la solicitud.");
+            }
+        });
+    }
+</script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "paging": true,          // Habilita paginación
+            "searching": true,       // Habilita la barra de búsqueda
+            "ordering": true,        // Habilita el ordenamiento de columnas
+            "pageLength": 5,         // Muestra 5 registros por página
+        });
+    });
+</script>
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #a5dfa4 0%, #d5ffd2 100%);
+        color: #1a4a5a;
+    }
+
+    .container {
+        max-width: 1300px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f8f9fa;
+    }
+
+    th {
+        background-color: #1f2937;
+        color: #ffffff;
+        font-weight: bold;
+        padding: 12px;
+        text-align: center;
+    }
+
+    td {
+        background-color: #ffffff;
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #e3e3e3;
+    }
+
+    tbody tr:nth-child(odd) td {
+        background-color: #e9f7ec;
+    }
+
+    tbody tr:hover td {
+        background-color: #c8e6c9;
+    }
+
+    .btn-create {
+        font-weight: bold;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background-color: #38b2ac;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+        .btn-create:hover {
+            background-color: #319795;
+            opacity: 0.85;
+        }
+
+    .btn-edit {
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #4CAF50;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+        .btn-edit:hover {
+            background-color: #45a049;
+        }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+    /* Separación entre el buscador de DataTables y la tabla */
+    .dataTables_filter {
+        margin-bottom: 20px; /* Espacio entre la barra de búsqueda y la tabla */
+    }
+</style>

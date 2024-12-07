@@ -1,0 +1,288 @@
+﻿@model glamping_addventure3.Models.Habitacion
+
+@{
+    ViewData["Title"] = "Crear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-4" style="max-width: 1000px;">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row mb-3 align-items-end">
+            <div class="col-md-6">
+        <label asp-for="NombreHabitacion">Nombre de la Habitación</label>
+        <input asp-for="NombreHabitacion" class="form-control" />
+        <span asp-validation-for="NombreHabitacion" class="text-danger"></span>
+    </div>
+            <div class="col-md-6">
+                <label asp-for="IdtipodeHabitacion">Tipo de Habitación</label>
+                <select asp-for="IdtipodeHabitacion" asp-items="ViewBag.IdtipodeHabitacion" class="form-control"></select>
+                <span asp-validation-for="IdtipodeHabitacion" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+        <label asp-for="Descripcion">Descripción</label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+        <label asp-for="Costo">Costo</label>
+        <input asp-for="Costo" type="number" step="0.01" min="0" class="form-control" />
+        <span asp-validation-for="Costo" class="text-danger"></span>
+    </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+            <label asp-for="ImagenHabitacion">Imagen de la Habitación</label>
+            <input type="file" name="ImageFile" class="form-control" required />
+            <span asp-validation-for="ImagenHabitacion" class="text-danger"></span>
+            </div>
+			<div class="col-md-6">
+				<label class="form-label">Estado</label>
+				<div class="form-check">
+					<input asp-for="Estado" class="form-check-input" type="checkbox" id="EstadoCheckbox" />
+					<label class="form-check-label" asp-for="Estado">Confirmar Estado</label>
+				</div>
+				<span asp-validation-for="Estado" class="text-danger"></span>
+			</div>
+
+
+				<h4>Muebles Disponibles</h4>
+				<div class="muebles-container">
+					@foreach (var mueble in ViewData["MueblesDisponibles"] as List<Mueble>)
+
+					{
+						<div class="mueble-item">
+							<label>@mueble.NombreMueble</label>
+							<input type="number" name="SelectedMuebles[@mueble.Idmueble]" min="0" max="@mueble.CantidadDisponible" value="0" class="form-control" />
+							<small>Disponible: @mueble.CantidadDisponible</small>
+						</div>
+					}
+				</div>
+    
+
+                   
+
+
+    <span id="muebleError" class="text-danger" style="display:none;">Debe seleccionar al menos un mueble.</span>
+
+
+                <!-- Botones -->
+                <div class="d-flex justify-content-center mt-3 gap-2">
+                    <button class="btn btn-primary" type="submit" style="background: #38b2ac; border: none; color: #fff; font-weight: bold;">crear</button>
+                    <a asp-action="Index" class="btn btn-secondary" style="background: #4b5563; border: none; color: #fff; font-weight: bold;">Cancelar</a>
+                </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    // Validación de que se seleccionó una imagen antes de enviar el formulario
+    $("form").submit(function (event) {
+        // Validación de imagen
+        var imageFile = $("input[name='ImageFile']").get(0).files.length;
+        if (imageFile === 0) {
+            alert("Debes seleccionar una imagen.");
+            event.preventDefault();
+            return false;
+        }
+
+        // Validación de estado (checkbox)
+        var estadoChecked = $("#Estado").is(":checked");
+        if (!estadoChecked) {
+            alert("Debes confirmar el estado.");
+            event.preventDefault();
+            return false;
+        }
+
+        // Validación de muebles seleccionados
+        var mueblesSeleccionados = false;
+        $("input[name^='SelectedMuebles']").each(function () {
+            if ($(this).val() > 0) {
+                mueblesSeleccionados = true;
+            }
+        });
+
+        if (!mueblesSeleccionados) {
+            $("#muebleError").show();
+            event.preventDefault();
+            return false;
+        }
+
+        return true; // Si todo es válido, permitir el envío del formulario
+    });
+</script>
+<style>
+    .form-label {
+        color: #ffffff; /* Cambiar color a blanco para las etiquetas */
+    }
+
+    #permissionSearch {
+        color: #ffffff; /* Cambiar color a blanco para el input de búsqueda */
+    }
+
+    #nombreRol {
+        color: #ffffff; /* Cambiar color a blanco para el input del nombre de rol */
+    }
+
+    /* Otros estilos permanecen igual */
+    .modal-lg {
+        max-width: 300%; /* Ajuste para un modal más grande */
+        height: auto;
+        overflow-y: auto; /* Habilitar scroll si el contenido es extenso */
+        margin-bottom: 90px;
+    }
+
+    .btn-create {
+        background-color: #38b2ac; /* Verde brillante */
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .btn-create:hover {
+            background-color: #319795; /* Verde más oscuro al pasar el mouse */
+            transform: translateY(-2px); /* Animación sutil */
+        }
+
+    .btn-secondary {
+        background-color: #4b5563; /* Gris oscuro */
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 20px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #374151; /* Gris más oscuro al pasar el mouse */
+        }
+
+    /* Estilos como los que ya has definido */
+    .form-label {
+        color: #ffffff; /* Cambiar color a blanco para las etiquetas */
+    }
+
+    /* Otros estilos permanecen igual */
+    .permissions-container {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #4b5563;
+        background-color: #2d3748;
+        border-radius: 10px;
+    }
+
+    .permission-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .permission-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+    }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 34px;
+        transition: 0.4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+    input:checked + .slider {
+        background-color: #38b2ac; /* Verde brillante */
+    }
+
+        input:checked + .slider:before {
+            transform: translateX(14px);
+        }
+
+    .container {
+        background-color: #1f2937; /* Fondo oscuro */
+        color: #e5e7eb; /* Texto claro */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+    }
+
+    .form-control {
+        background: #2d3748; /* Fondo oscuro para inputs */
+        border: 1px solid #4b5563; /* Borde oscuro */
+        color: #e5e7eb; /* Texto claro */
+        border-radius: 8px;
+        padding: 10px;
+        transition: border-color 0.3s, background 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #38b2ac; /* Verde brillante al enfocar */
+            outline: none;
+            background: #2d3748;
+            color: #e5e7eb; /* Asegúrate de que el texto sea blanco al enfocar */
+        }
+
+    .permission-nombre {
+        color: #e5e7eb;
+    }
+
+    /* Cambiar color de los placeholders */
+    ::placeholder {
+        color: #ffffff !important; /* Cambiar color a blanco para los placeholders */
+    }
+
+    #permissionSearch::placeholder,
+    #nombreRol::placeholder {
+        color: #ffffff !important; /* Asegurarse de que los placeholders sean blancos */
+    }
+</style>

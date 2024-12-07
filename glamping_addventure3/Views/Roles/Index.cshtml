@@ -1,0 +1,246 @@
+﻿@model IEnumerable<glamping_addventure3.Models.Role>
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-end mb-4">
+        <a asp-action="Create" class="btn btn-create">
+            <i class="fas fa-plus"></i> Crear
+        </a>
+    </div>
+
+    <!-- Tabla -->
+    <table id="myTable" class="display" style="width:100%">
+        <thead class="thead-custom">
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rol in Model)
+            {
+                <tr id="fila-@rol.Idrol" class="@(rol.IsActive ? "" : "table-danger")">
+                    <td>@rol.Nombre</td>
+                    <td id="estado-@rol.Idrol">@Html.Raw(rol.IsActive ? "Activo" : "Inactivo")</td>
+                    <td>
+                        <button onclick="cambiarEstado(@rol.Idrol, this)" class="btn btn-warning btn-sm" id="cambiar-estado-@rol.Idrol">
+                            <i class="@(rol.IsActive ? "fa-solid fa-xmark" : "fa-solid fa-plug")"></i>
+                        </button>
+                        <a asp-action="Edit" asp-route-id="@rol.Idrol" class="btn btn-success btn-sm">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+
+                        <button type="button" class="btn btn-danger btn-sm" onclick="loadDelete(@rol.Idrol)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                       
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Eliminar Rol</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="deleteModalBody">
+                <div class="text-center">Cargando...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "paging": true,          // Habilita paginación
+            "searching": true,       // Habilita la barra de búsqueda
+            "ordering": true,        // Habilita el ordenamiento de columnas
+            "pageLength": 5,         // Muestra 5 registros por página
+        });
+    });
+</script>
+
+<script>
+
+    var currentDeleteId = null;  // Variable global para almacenar el ID del paquete a eliminar
+
+    // Función para cargar el contenido del modal con la vista parcial
+    function loadDelete(id) {
+        console.log("Cargando rol con ID:", id); // Log para depuración
+
+        // Hacer una solicitud AJAX para cargar la vista parcial
+        $.get('/Roles/DeletePartial/' + id, function (data) {
+            $('#deleteModalBody').html(data); // Cargar contenido
+            $('#deleteModal').modal('show'); // Mostrar modal
+        }).fail(function () {
+            $('#deleteModalBody').html('<div class="text-danger">Error al cargar la información del rol.</div>');
+        });
+    }
+</script>
+
+<script>
+    // Función para confirmar la eliminación
+    function submitDeleteForm(form) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario.
+
+        $.post($(form).attr('action'), $(form).serialize())
+            .done(function (response) {
+                if (response.success) {
+                    $('#deleteModal').modal('hide'); // Cerrar modal
+                    location.reload(); // Recargar página
+                } else {
+                    alert(response.message); // Mostrar mensaje de error
+                }
+            })
+            .fail(function (xhr, status, error) {
+                console.error("Error:", error); // Log de errores
+                console.error("Detalles:", xhr.responseText); // Mostrar respuesta completa
+                alert("Ocurrió un error inesperado al intentar eliminar el rol.");
+            });
+    }
+</script>
+
+
+
+
+
+<script>
+    function cambiarEstado(id, button) {
+        $.ajax({
+            url: '/Roles/ToggleActive',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response.success) {
+                    // Actualizar el estado visual
+                    const estadoText = response.estado ? "Activo" : "Inactivo";
+                    $("#estado-" + id).text(estadoText);
+
+                    // Cambiar el estilo de la fila según el estado
+                    const fila = $("#fila-" + id);
+                    if (response.estado) {
+                        fila.removeClass("table-danger");
+                    } else {
+                        fila.addClass("table-danger");
+                    }
+
+                    // Actualizar el ícono del botón
+                    const icon = $(button).find("i");
+                    if (response.estado) {
+                        icon.removeClass("fa-plug").addClass("fa-xmark");
+                    } else {
+                        icon.removeClass("fa-xmark").addClass("fa-plug");
+                    }
+                } else {
+                    alert("No se pudo cambiar el estado.");
+                }
+            },
+            error: function () {
+                alert("Error al procesar la solicitud.");
+            }
+        });
+    }
+</script>
+
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #a5dfa4 0%, #d5ffd2 100%);
+        color: #1a4a5a;
+    }
+
+    .container {
+        max-width: 1300px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f8f9fa;
+    }
+
+    th {
+        background-color: #1f2937;
+        color: #ffffff;
+        font-weight: bold;
+        padding: 12px;
+        text-align: center;
+    }
+
+    td {
+        background-color: #ffffff;
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #e3e3e3;
+    }
+
+    tbody tr:nth-child(odd) td {
+        background-color: #e9f7ec;
+    }
+
+    tbody tr:hover td {
+        background-color: #c8e6c9;
+    }
+
+    .btn-create {
+        font-weight: bold;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background-color: #38b2ac;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+        .btn-create:hover {
+            background-color: #319795;
+            opacity: 0.85;
+        }
+
+    .btn-edit {
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #4CAF50;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+        .btn-edit:hover {
+            background-color: #45a049;
+        }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+    /* Separación entre el buscador de DataTables y la tabla */
+    .dataTables_filter {
+        margin-bottom: 20px; /* Espacio entre la barra de búsqueda y la tabla */
+    }
+</style>

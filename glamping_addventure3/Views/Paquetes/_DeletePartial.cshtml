@@ -1,0 +1,23 @@
+﻿@model glamping_addventure3.Models.Paquete
+
+<div>
+
+    <!-- Mostrar el mensaje de error si existe -->
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div id="errorMessage" class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <div>
+
+        <p>¿Estás seguro de que deseas eliminar el paquete <strong>@Model.NombrePaquete</strong>?</p>
+
+        <form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Idpaquete" onsubmit="return submitDeleteForm(this);">
+        <div class="d-flex justify-content-center">
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+        </form>
+    </div>

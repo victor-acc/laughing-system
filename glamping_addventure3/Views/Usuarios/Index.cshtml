@@ -1,0 +1,195 @@
+﻿@model IEnumerable<glamping_addventure3.Models.Usuario>
+@{
+    ViewData["Title"] = "Usuarios";
+}
+<div class="container">
+    <div class="d-flex justify-content-end mb-4">
+        <a asp-action="Create" class="btn btn-create">
+            <i class="fas fa-plus"></i> Crear
+        </a>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <table id="myTable" class="display" style="width:100%">
+        <thead class="thead-custom">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Tipo de Documento</th>
+                <th>Número de Documento</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.NombreUsuario</td>
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.Email</td>
+                    <td>@usuario.TipoDocumento</td>
+                    <td>@usuario.NumeroDocumento</td>
+                    <td>@usuario.Telefono</td>
+                    <td>@usuario.Direccion</td>
+                    <td>@usuario.IdrolNavigation?.Nombre</td>
+                    <td>
+                        @if (usuario.Email == "isabela.zg29@gmail.com")
+
+                        {
+                            <span class="text-muted">No editable</span>
+                        }
+
+                        else
+
+                        {
+                        <a asp-action="Edit" asp-controller="Usuarios" asp-route-id="@usuario.Idusuario" class="btn btn-success btn-sm">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <button class="btn btn-danger btn-sm" onclick="confirmDelete('@usuario.Idusuario', '@usuario.NombreUsuario')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Eliminar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p id="deleteMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <form id="deleteForm" asp-action="Delete" method="post">
+                    <input type="hidden" name="id" id="deleteUserId" />
+                    <button type="submit" class="btn btn-danger me-2">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    function confirmDelete(id, nombreUsuario) {
+        $('#deleteUserId').val(id);
+        $('#deleteMessage').html(`¿Estás seguro de que deseas eliminar al usuario <strong>${nombreUsuario}</strong>?`);
+        $('#deleteModal').modal('show');
+    }
+</script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "paging": true,          // Habilita paginación
+            "searching": true,       // Habilita la barra de búsqueda
+            "ordering": true,        // Habilita el ordenamiento de columnas
+            "pageLength": 5,         // Muestra 5 registros por página
+        });
+    });
+</script>
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #a5dfa4 0%, #d5ffd2 100%);
+        color: #1a4a5a;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 1300px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f8f9fa;
+    }
+
+    th {
+        background-color: #1f2937;
+        color: #ffffff;
+        font-weight: bold;
+        padding: 12px;
+        text-align: center;
+    }
+
+    td {
+        background-color: #ffffff;
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #e3e3e3;
+    }
+
+    tbody tr:nth-child(odd) td {
+        background-color: #e9f7ec;
+    }
+
+    tbody tr:hover td {
+        background-color: #c8e6c9;
+    }
+
+    .btn-create {
+        font-weight: bold;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background-color: #38b2ac;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+        .btn-create:hover {
+            background-color: #319795;
+            opacity: 0.85;
+        }
+
+    .btn-edit {
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #4CAF50;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+        .btn-edit:hover {
+            background-color: #45a049;
+        }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+    /* Separación entre el buscador de DataTables y la tabla */
+    .dataTables_filter {
+        margin-bottom: 20px; /* Espacio entre la barra de búsqueda y la tabla */
+    }
+</style>

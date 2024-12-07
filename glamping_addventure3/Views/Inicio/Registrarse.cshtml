@@ -1,0 +1,328 @@
+﻿@model glamping_addventure3.Models.Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+            margin: 0;
+            padding: 0;
+        }
+
+        .register-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 900px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+            .register-box h1 {
+                color: #333;
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .form-control {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #1a4a5a;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+            .btn-submit:hover {
+                background: #055e05;
+            }
+
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+            .register-link a {
+                color: #1a4a5a;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .register-link a:hover {
+                    text-decoration: underline;
+                }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .required::after {
+            content: " *";
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="register-box">
+        <h1>Registrarse</h1>
+        <form id="registroForm" asp-controller="Inicio" asp-action="Registrarse" method="post" novalidate>
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label asp-for="TipoDocumento" class="required">Tipo de Documento</label>
+                    <select id="TipoDocumento" class="form-control" asp-for="TipoDocumento">
+                        <option value="">Seleccione el tipo de documento</option>
+                        <option value="DNI">T.I</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="Cedula">Cédula de Ciudadanía</option>
+                        <option value="CedulaEx">Cédula Extranjera</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.TipoDocumento, "", new { @class = "error-message" })
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label asp-for="NumeroDocumento" class="required">Número de Documento</label>
+                    <input class="form-control" type="text" asp-for="NumeroDocumento" placeholder="Número de documento" required maxlength="10" />
+                    <div class="error-message" id="errorNumeroDocumento"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="NombreUsuario" class="required">Nombre</label>
+                    <input class="form-control" type="text" asp-for="NombreUsuario" placeholder="Nombre" required />
+                    <div class="error-message" id="errorNombreUsuario"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Apellido" class="required">Apellido</label>
+                    <input class="form-control" type="text" asp-for="Apellido" placeholder="Apellido" required />
+                    <div class="error-message" id="errorApellido"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Pais" class="required">País</label>
+                    <select id="Pais" class="form-control" asp-for="Pais" required>
+                        <option value="">Seleccione su país</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                        <option value="España">España</option>
+                        <option value="México">México</option>
+                    </select>
+                    <div class="error-message" id="errorPais"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="Ciudad" class="required">Ciudad</label>
+                    <select id="Ciudad" class="form-control" name="Ciudad" required>
+                        <option value="">Seleccione una ciudad</option>
+                    </select>
+                    <div class="error-message" id="errorCiudad"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Direccion" class="required">Dirección</label>
+                    <input class="form-control" type="text" asp-for="Direccion" placeholder="Dirección" required />
+                    <div class="error-message" id="errorDireccion"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Telefono" class="required">Teléfono</label>
+                    <input class="form-control" type="text" asp-for="Telefono" placeholder="Teléfono" required maxlength="10" />
+                    <div class="error-message" id="errorTelefono"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Idrol" class="required">Rol</label>
+                    <select class="form-control" asp-for="Idrol" required>
+                        <option value="">Seleccione el tipo de rol</option>
+                        @foreach (var rol in ViewBag.Roles)
+
+                        {
+
+                            if (rol.IsActive)
+
+                            {
+                                <option value="@rol.Idrol">@rol.Nombre</option>
+                            }
+
+                            else
+
+                            {
+                                <option value="@rol.Idrol" disabled>@rol.Nombre</option>
+                            }
+
+                        }
+                        <option value="1">Administrador</option>
+                        <option value="2">Recepcionista</option>
+                    </select>
+                    <div class="error-message" id="errorIdrol"></div>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Email" class="required">Correo Electrónico</label>
+                    <input class="form-control" type="email" asp-for="Email" placeholder="Correo Electrónico" required />
+                    <div class="error-message" id="errorEmail"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Contrasena" class="required">Contraseña</label>
+                    <input class="form-control" type="password" asp-for="Contrasena" placeholder="Contraseña" required />
+                    <div class="error-message" id="errorContrasena"></div>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="ConfirmarContrasena" class="required">Confirmar Contraseña</label>
+                    <input class="form-control" type="password" id="ConfirmarContrasena" name="confirmarContrasena" placeholder="Confirmar Contraseña" required />
+                    <span class="error-message" id="errorConfirmarContrasena"></span>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 mb-3">
+                <button class="btn-submit" type="submit">Registrar</button>
+            </div>
+
+            ¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion", "Inicio")">Iniciar Sesión</a>
+        </form>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Número de Documento: Solo números, máximo 10 caracteres
+            document.getElementById('NumeroDocumento').addEventListener('input', function (e) {
+                const error = document.getElementById('errorNumeroDocumento');
+                if (!/^\d{0,10}$/.test(this.value)) {
+                    error.textContent = 'Solo debe contener hasta 10 dígitos. Solo puede contener números. ';
+                    this.value = this.value.replace(/\D/g, '').substring(0, 10); // Quita caracteres no numéricos
+                } else {
+                    error.textContent = '';
+                }
+            });
+
+            // Nombre: Solo letras
+            document.getElementById('NombreUsuario').addEventListener('input', function (e) {
+                const error = document.getElementById('errorNombreUsuario');
+                if (!/^[a-zA-Z]*$/.test(this.value)) {
+                    error.textContent = 'Solo puede contener letras.';
+                    this.value = this.value.replace(/[^a-zA-Z]/g, ''); // Quita caracteres no alfabéticos
+                } else {
+                    error.textContent = '';
+                }
+            });
+
+            // Apellido: Solo letras
+            document.getElementById('Apellido').addEventListener('input', function (e) {
+                const error = document.getElementById('errorApellido');
+                if (!/^[a-zA-Z]*$/.test(this.value)) {
+                    error.textContent = 'Solo puede contener letras.';
+                    this.value = this.value.replace(/[^a-zA-Z]/g, '');
+                } else {
+                    error.textContent = '';
+                }
+            });
+
+            // Teléfono: Solo números, máximo 10 caracteres
+            document.getElementById('Telefono').addEventListener('input', function (e) {
+                const error = document.getElementById('errorTelefono');
+                if (!/^\d{0,10}$/.test(this.value)) {
+                    error.textContent = 'Solo debe contener hasta 10 dígitos. Solo puede contener números.';
+                    this.value = this.value.replace(/\D/g, '').substring(0, 10);
+                } else {
+                    error.textContent = '';
+                }
+            });
+
+            // Contraseña: Validación compleja
+            document.getElementById('Contrasena').addEventListener('input', function (e) {
+                const error = document.getElementById('errorContrasena');
+                if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{10,}/.test(this.value)) {
+                    error.textContent = 'Debe tener al menos 10 caracteres, una mayúscula, una minúscula, un número y un carácter especial.';
+                } else {
+                    error.textContent = '';
+                }
+
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Pais').change(function () {
+                var pais = $(this).val();
+                var ciudadDropdown = $('#Ciudad');
+                ciudadDropdown.empty(); // Limpiar las opciones anteriores
+
+                if (pais) {
+                    $.ajax({
+                        url: '/Inicio/ObtenerCiudades',
+                        type: 'GET',
+                        data: { pais: pais },
+                        success: function (ciudades) {
+                            ciudadDropdown.append('<option value="">Seleccione una ciudad</option>');
+                            $.each(ciudades, function (index, ciudad) {
+                                ciudadDropdown.append('<option value="' + ciudad + '">' + ciudad + '</option>');
+                            });
+                        },
+                        error: function () {
+                            alert('Error al cargar las ciudades. Inténtelo nuevamente.');
+                        }
+                    });
+                } else {
+                    ciudadDropdown.append('<option value="">Seleccione un país primero</option>');
+                }
+            });
+
+
+
+        });
+
+    </script>
+</body>
+</html>
